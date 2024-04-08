@@ -9,7 +9,11 @@ const resolvers = require('./resolvers');
 const SERVER_PORT = 4000;
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+    origin: 'http://yourfrontenddomain.com',
+    methods: 'GET,POST',
+}));
 
 // Setting  up MongoDB
 const DB_CONNECTION_STRING = 'mongodb+srv://dbrootadmin:dbpassword@cluster0.o0ag19w.mongodb.net/db_w2024_comp3133?retryWrites=true&w=majority';
