@@ -27,24 +27,20 @@ const resolvers = {
             await user.save();
             return user;
         },
-        addNewEmployee: async (_, {first_name, last_name, email, gender, salary}) => {
-            gender = gender.toLowerCase();
-            const employee = new EmpModel({ first_name, last_name, email, gender, salary });
+        addNewEmployee: async (_, {first_name, last_name, email}) => {
+            const employee = new EmpModel({ first_name, last_name, email});
             await employee.save();
             return employee;
         },
-        updateEmployeeById: async (_, {eid, first_name, last_name, email, gender, salary}) => {
+        updateEmployeeById: async (_, {eid, first_name, last_name, email}) => {
             first_name = capitalFirstLetter(first_name)
             last_name = capitalFirstLetter(last_name)
-            gender = capitalFirstLetter(gender)
 
             const updatedEmployee = await EmpModel.findByIdAndUpdate(eid,
                 { 
                     first_name, 
                     last_name, 
-                    email, 
-                    gender, 
-                    salary
+                    email
                 },
                 { new: true }
             );

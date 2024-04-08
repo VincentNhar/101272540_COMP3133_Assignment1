@@ -17,26 +17,12 @@ const EmployeeSchema = new Schema({
         },
         required: [true, 'Email is required'],
         unique: [true, 'Email already exists']
-    },
-    gender: {
-        type: String,
-        required: [true,'Gender is required'],
-        enum: {
-            values: ["male","female","other"],
-            message: 'Invalid gender value. Gender must be one of: Male, Female, Other'
-        }
-    },
-    salary:{
-        type: Number,
-        min: [0, 'Salary must not be 0'],
-        required: [true,'Salary is required']
     }
 });
 
 EmployeeSchema.pre('save', function (next){
     this.first_name = capitalFirstLetter(this.first_name)
     this.last_name = capitalFirstLetter(this.last_name)
-    this.gender = capitalFirstLetter(this.gender)
     next();
 });
 

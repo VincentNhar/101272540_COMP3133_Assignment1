@@ -12,8 +12,6 @@ const typeDefs = gql `
         first_name: String!
         last_name: String!
         email: String!
-        gender: String!
-        salary: Float
     }
 
     type Query {
@@ -24,8 +22,8 @@ const typeDefs = gql `
 
     type Mutation {
         signup(username: String!, email: String!, password: String!): User!
-        addNewEmployee(first_name: String!, last_name: String!, email: String!, gender: String!, salary: Float!): Employee!
-        updateEmployeeById(eid: ID!, first_name: String!, last_name: String!, email: String!, gender: String!, salary: Float!): Employee!
+        addNewEmployee(first_name: String!, last_name: String!, email: String!): Employee!
+        updateEmployeeById(eid: ID!, first_name: String!, last_name: String!, email: String!): Employee!
         deleteEmployeeById(eid: ID!): Boolean
     }
 `
